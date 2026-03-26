@@ -17,6 +17,15 @@ class DocumentoRepository {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function search($q) {
+        $stmt = $this->db->prepare("
+            SELECT * FROM DOC_DOCUMENTO
+            WHERE DOC_NOMBRE LIKE ? OR DOC_CODIGO LIKE ?
+        ");
+        $stmt->execute(["%$q%", "%$q%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function create($data) {
         $stmt = $this->db->prepare("INSERT INTO DOC_DOCUMENTO (DOC_NOMBRE, DOC_CODIGO, DOC_CONTENIDO, DOC_ID_TIPO, DOC_ID_PROCESO) VALUES (?, ?, ?, ?, ?)");
         return $stmt->execute([

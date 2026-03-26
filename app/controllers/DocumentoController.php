@@ -11,6 +11,10 @@ class DocumentoController {
         return $this->service->obtenerTodos();
     }
 
+    public function buscar() {
+        return $this->service->buscar($_GET['q']);
+    }
+
     public function store() {
         $this->service->crear($_POST);
         header("Location: index.php");

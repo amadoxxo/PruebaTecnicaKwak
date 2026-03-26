@@ -22,6 +22,10 @@ class DocumentoService {
         return $this->repo->create($data);
     }
 
+    public function buscar($q) {
+        return $this->repo->search($q);
+    }
+
     public function obtenerPorId($id) {
         return $this->repo->getById($id);
     }

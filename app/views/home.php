@@ -3,8 +3,12 @@
 
 <?php $editando = isset($docEdit); ?>
 
-<form method="POST" action="index.php">
+<form method="GET" action="index.php">
+    <input name="q" placeholder="Buscar por nombre o código">
+    <button>Buscar</button>
+</form>
 
+<form method="POST" action="index.php">
     <!-- ID oculto para editar -->
     <?php if ($editando): ?>
         <input type="hidden" name="id" value="<?= $docEdit['DOC_ID'] ?>">
