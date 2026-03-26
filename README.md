@@ -76,11 +76,15 @@ CREATE TABLE DOC_DOCUMENTO (
 
 ### 3. Configurar conexión a la base de datos
 
+```
 config/database.php
 
 new PDO("mysql:host=localhost;dbname=crud_docs;charset=utf8", "root", "");
+```
 
 ### 4. CREDENCIALES DE ACCESO
 
+```
 Usuario: admin
 Contraseña: 123456
+```
