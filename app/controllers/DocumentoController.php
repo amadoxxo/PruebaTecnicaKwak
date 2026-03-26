@@ -12,10 +12,18 @@ class DocumentoController {
     }
 
     public function store() {
-        // var_dump("ENTRA STORE");
-        // exit;
         $this->service->crear($_POST);
         header("Location: index.php");
+    }
+
+    public function update() {
+        $this->service->actualizar($_POST['id'], $_POST);
+        header("Location: index.php");
+        exit;
+    }
+
+    public function edit() {
+        return $this->service->obtenerPorId($_GET['id']);
     }
 
     public function delete() {

@@ -22,6 +22,14 @@ class DocumentoService {
         return $this->repo->create($data);
     }
 
+    public function obtenerPorId($id) {
+        return $this->repo->getById($id);
+    }
+
+    public function actualizar($id, $data) {
+        return $this->repo->update($id, $data);
+    }
+
     public function obtenerTodos() {
         return $this->repo->getAll();
     }

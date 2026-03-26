@@ -45,6 +45,14 @@ if (isset($_POST['create'])) {
     $controller->store();
 }
 
+if (isset($_GET['edit'])) {
+    $docEdit = $controller->edit();
+}
+
+if (isset($_POST['update'])) {
+    $controller->update();
+}
+
 if (isset($_GET['delete'])) {
     $controller->delete();
 }

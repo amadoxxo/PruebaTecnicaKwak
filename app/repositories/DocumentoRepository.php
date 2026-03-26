@@ -11,10 +11,10 @@ class DocumentoRepository {
         return $this->db->query("SELECT * FROM DOC_DOCUMENTO")->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function search($q) {
-        $stmt = $this->db->prepare("SELECT * FROM DOC_DOCUMENTO WHERE DOC_NOMBRE LIKE ? OR DOC_CODIGO LIKE ?");
-        $stmt->execute(["%$q%", "%$q%"]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    public function getById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM DOC_DOCUMENTO WHERE DOC_ID = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function create($data) {
@@ -25,6 +25,25 @@ class DocumentoRepository {
             $data['contenido'],
             $data['tipo'],
             $data['proceso']
+        ]);
+    }
+
+    public function update($id, $data) {
+        $stmt = $this->db->prepare("
+            UPDATE DOC_DOCUMENTO 
+            SET DOC_NOMBRE = ?, 
+                DOC_CONTENIDO = ?, 
+                DOC_ID_TIPO = ?, 
+                DOC_ID_PROCESO = ?
+            WHERE DOC_ID = ?
+        ");
+
+        return $stmt->execute([
+            $data['nombre'],
+            $data['contenido'],
+            $data['tipo'],
+            $data['proceso'],
+            $id
         ]);
     }
 
