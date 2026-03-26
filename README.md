@@ -84,5 +84,7 @@ new PDO("mysql:host=localhost;dbname=crud_docs;charset=utf8", "root", "");
 
 ### 4. CREDENCIALES DE ACCESO
 
-``` Usuario: admin
+```Usuario: admin
 Contraseña: 123456
+
+```
